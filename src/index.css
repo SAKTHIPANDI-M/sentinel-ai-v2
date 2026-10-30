@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --bg-app: #0B0F17;
+  --bg-sidebar: #0B0F17;
+  --bg-header: #0E131F;
+  --bg-card: #111827;
+  --bg-card-hover: #1F2937;
+  --bg-card-subtle: #0E1524;
+  --bg-elevated: #1F2937;
+  --bg-input: #0B0F17;
+  --border-color: #1E293B;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-strong: #334155;
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+  --text-dim: #64748B;
+  --accent-amber: #F59E0B;
+  --accent-cyan: #06B6D4;
+}
+
+html.light, [data-theme="light"] {
+  color-scheme: light;
+  --bg-app: #F8FAFC;
+  --bg-header: #FFFFFF;
+  --bg-sidebar: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F1F5F9;
+  --bg-card-subtle: #F8FAFC;
+  --bg-input: #FFFFFF;
+  --border-color: #E2E8F0;
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --border-strong: #CBD5E1;
+  --text-main: #0F172A;
+  --text-muted: #64748B;
+  --text-dim: #94A3B8;
+}
+
+@layer base {
+  body {
+    background-color: var(--bg-app);
+    color: var(--text-main);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    transition: background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Custom subtle scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0B0F17;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1E293B;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #334155;
+  }
+}
+
+/* Fixed Full-Height Sidebar Navigation Layout (preserving user request 4) */
+.sidebar {
+  position: fixed;
+  top: 3.5rem;
+  left: 0;
+  width: 230px;
+  height: calc(100vh - 3.5rem);
+  height: calc(100dvh - 3.5rem);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  z-index: 30;
+  background-color: #0B0F17;
+  border-right: 1px solid #1E293B;
+}
+
+.sidebar.collapsed {
+  width: 4rem;
+}
+
+.main-dashboard-canvas {
+  margin-left: 230px;
+  min-height: calc(100vh - 3.5rem);
+  min-height: calc(100dvh - 3.5rem);
+  transition: margin-left 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.main-dashboard-canvas.sidebar-collapsed {
+  margin-left: 4rem;
+}
+
+/* Card & panel utility styles */
+.card-surface {
+  background-color: #111827;
+  border: 1px solid #1E293B;
+  border-radius: 0.75rem;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-surface:hover {
+  border-color: #334155;
+}
+
+/* Light mode component surface and typography overrides */
+html.light .bg-\[\#0B0F17\],
+html.light .sidebar {
+  background-color: #FFFFFF !important;
+}
+html.light .bg-\[\#0E131F\]\/90,
+html.light .bg-\[\#0E131F\]\/50,
+html.light .bg-\[\#0E131F\] {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+html.light .bg-\[\#111827\] {
+  background-color: #FFFFFF !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+}
+html.light .bg-slate-900,
+html.light .bg-slate-900\/90,
+html.light .bg-slate-900\/80,
+html.light .bg-slate-900\/60,
+html.light .bg-slate-900\/50,
+html.light .bg-slate-900\/40 {
+  background-color: #F1F5F9 !important;
+}
+html.light .bg-slate-950 {
+  background-color: #FFFFFF !important;
+}
+html.light .border-slate-800,
+html.light .border-slate-800\/90,
+html.light .border-slate-800\/80,
+html.light .border-slate-800\/70,
+html.light .border-slate-800\/60,
+html.light .border-slate-850,
+html.light .border-slate-750 {
+  border-color: #E2E8F0 !important;
+}
+html.light .text-white,
+html.light .text-slate-100 {
+  color: #0F172A !important;
+}
+html.light .text-slate-400 {
+  color: #64748B !important;
+}
+
+@keyframes radar-sweep {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-radar-sweep {
+  animation: radar-sweep 10s linear infinite;
+  transform-origin: 0px 0px;
+}

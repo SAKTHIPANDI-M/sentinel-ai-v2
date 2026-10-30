@@ -1,0 +1,6 @@
+{
+  "name": "SentinelAI — AI Reliability & Self-Breaking Model Detection",
+  "description": "Continuous AI reliability monitoring, hidden subgroup failure detection, statistical drift analysis, and root cause investigation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
